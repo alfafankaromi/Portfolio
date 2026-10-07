@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alfafan — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Space+Grotesk:wght@400;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F3EE;--ink:#151515;--accent:#2F5D50;--line:#E3DED6;--card:#FFFFFF;--muted:#6E6E6E;
+  --display:'Anton','Bebas Neue',Impact,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Space Grotesk','Inter',system-ui,sans-serif;
+  --sign:'Mrs Saint Delafield','Caveat',cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:13px;line-height:1.6;
+  padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+a{color:inherit;text-decoration:none}
+.label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.frame{position:relative;max-width:1280px;margin:0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 44px}
+.side{position:absolute;top:50%;writing-mode:vertical-rl;font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.side.l{left:12px;transform:translateY(-50%) rotate(180deg)}
+.side.r{right:12px;transform:translateY(-50%)}
+.arrow{display:inline-block;transition:transform .25s}
+.link{transition:color .25s}.link:hover{color:var(--accent)}.link:hover .arrow{transform:translateX(5px)}
+.sec-title{font-family:var(--serif);font-weight:700;color:var(--accent);font-size:clamp(1.3rem,2.4vw,1.9rem);text-transform:uppercase;line-height:1.15}
+.sec-head{display:grid;grid-template-columns:1fr 1fr auto;gap:24px;align-items:center;padding:28px 0 14px}
+.sec-head p{color:var(--muted);max-width:340px;margin:0}
+section{border-top:1px solid var(--line)}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--line)}
+.top .star{color:var(--accent);font-size:15px;margin-right:8px}
+
+/* hero */
+.hero{position:relative;min-height:640px;overflow:hidden}
+.big{font-family:var(--display);font-size:clamp(5rem,15vw,13rem);line-height:1;letter-spacing:-2px;text-transform:uppercase;text-align:center;padding-top:20px;position:relative;z-index:1}
+.circle{position:absolute;left:50%;bottom:44px;width:clamp(260px,36vw,470px);aspect-ratio:1;border-radius:50%;transform:translateX(-50%);z-index:0;
+  background:radial-gradient(circle at 32% 26%,#4A8570 0%,#2F5D50 48%,#1E4036 100%);
+  box-shadow:inset -22px -34px 70px rgba(0,0,0,.28),inset 14px 18px 40px rgba(255,255,255,.08),0 34px 60px -18px rgba(30,64,54,.45)}
+.circle::after{content:"";position:absolute;left:14%;right:14%;bottom:-26px;height:34px;border-radius:50%;background:rgba(21,21,21,.22);filter:blur(16px)}
+.photo{position:absolute;left:50%;bottom:0;width:clamp(260px,34vw,440px);transform:translateX(-50%);z-index:2;filter:drop-shadow(0 22px 22px rgba(0,0,0,.35)) drop-shadow(-10px 0 18px rgba(0,0,0,.12))}
+.photo svg{display:block;width:100%;height:auto}
+.stamp{position:absolute;right:11%;top:260px;width:118px;height:118px;border-radius:50%;background:var(--card);border:1px solid var(--line);z-index:3;display:grid;place-items:center}
+.stamp svg{width:100%;height:100%;animation:spin 18s linear infinite}
+.stamp b{position:absolute;color:var(--accent);font-size:22px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bio{position:absolute;left:0;bottom:36px;z-index:3;max-width:340px}
+.bio h1{font-family:var(--serif);font-weight:700;font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.05;text-transform:uppercase;margin:6px 0 12px}
+.bio .role{color:var(--accent);margin-bottom:12px}
+.bio p{color:var(--muted);max-width:300px}
+.sign{font-family:var(--sign);font-size:3.2rem;line-height:1;color:var(--ink);margin-top:8px;transform:rotate(-4deg);display:inline-block}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:0 0 44px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 4px 14px rgba(21,21,21,.06),0 14px 30px -12px rgba(21,21,21,.12);transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 8px 20px rgba(21,21,21,.1),0 28px 44px -14px rgba(47,93,80,.28);position:relative;z-index:1}
+.thumb{aspect-ratio:4/3;overflow:hidden}
+.thumb svg{width:100%;height:100%;display:block;transition:transform .6s}
+.card:hover .thumb svg{transform:scale(1.07)}
+.card footer{display:flex;gap:14px;align-items:center;padding:16px 14px;border-top:1px solid var(--line)}
+.card .n{font-family:var(--serif);font-weight:700;font-size:1.7rem;color:var(--accent)}
+.card h3{font-family:var(--serif);font-size:1rem;line-height:1.2}
+.card small{color:var(--muted);font-size:11px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:1.1fr 1fr 1.2fr;border-top:1px solid var(--line)}
+.skills>div{padding:10px 30px 30px 0}
+.skills>div+div{padding-left:30px;border-left:1px solid var(--line)}
+.bar{margin-bottom:16px}
+.bar div{display:flex;justify-content:space-between;margin-bottom:6px}
+.track{height:2px;background:var(--line)}
+.fill{height:100%;width:0;background:var(--accent);transition:width 1.3s cubic-bezier(.2,.7,.2,1)}
+.quote .mark{font-family:var(--serif);font-size:7rem;line-height:.8;color:var(--accent);height:64px}
+.quote p{font-family:var(--serif);font-size:1.35rem;line-height:1.5;margin-top:10px}
+.feat{display:flex;gap:14px;margin-bottom:22px}
+.ico{flex:none;width:44px;height:44px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.ico svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feat p{color:var(--muted);font-size:12px;line-height:1.5}
+
+/* testimonials */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:40px}
+.rev{background:var(--card);border:1px solid var(--line);padding:26px;display:flex;flex-direction:column;gap:20px;justify-content:space-between}
+.rev .q{font-family:var(--serif);color:var(--accent);font-size:3rem;line-height:.6;height:24px}
+.who{display:flex;align-items:center;gap:12px}
+.av{width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:600;font-size:12px}
+.who span{display:block;color:var(--muted);font-size:11px}
+
+/* footer */
+.cta{display:grid;grid-template-columns:1.2fr .8fr 1fr;gap:30px;align-items:center;padding:44px 0}
+.cta h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.1;text-transform:uppercase;font-weight:700}
+.cta h2 em{font-style:normal;color:var(--accent)}
+.cta p{color:var(--muted);margin-top:12px;max-width:320px}
+.qr{text-align:center}
+.qr svg{width:110px;height:110px;background:#fff;padding:8px;border:1px solid var(--line)}
+.qr .label{display:block;margin-top:10px;color:var(--accent)}
+.contact li{list-style:none;display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.contact .ico{width:34px;height:34px}.contact .ico svg{width:15px;height:15px}
+
+
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;padding:0 0 36px}
+.about p{margin-bottom:14px;max-width:560px;font-size:14px}
+.facts{list-style:none;border-top:1px solid var(--line)}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.facts span{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;padding-bottom:40px}
+.chip{border:1px solid var(--ink);padding:8px 16px;border-radius:99px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:background .25s,color .25s}
+.chip:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip.soon{border-color:var(--accent);color:var(--accent);border-style:dashed}
+.chip.soon:hover{color:#fff}
+.focus{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.focus div{padding:14px 22px 26px 0}.focus div+div{padding-left:22px;border-left:1px solid var(--line)}
+.focus b{font-family:var(--serif);color:var(--accent);font-size:1.7rem;display:block}
+.focus h3{font-family:var(--serif);font-size:1.1rem;margin:4px 0 8px}
+.focus p{color:var(--muted);font-size:12px}
+.note{padding:18px 0 34px;font-family:var(--serif);font-style:italic;color:var(--muted);border-top:1px solid var(--line)}
+@media(max-width:960px){
+  .about{grid-template-columns:1fr}.focus{grid-template-columns:1fr 1fr}.focus div,.focus div+div{padding:22px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .frame{padding:0 22px}.side{display:none}
+  .projects{grid-template-columns:1fr 1fr}
+  .skills,.cta{grid-template-columns:1fr}
+  .skills>div,.skills>div+div{padding:26px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .reviews{grid-template-columns:1fr}
+  .sec-head{grid-template-columns:1fr;gap:10px}
+  .hero{min-height:760px}.stamp{right:4%;top:230px;width:96px;height:96px}
+  .bio{bottom:auto;top:430px;max-width:200px;background:transparent}
+  .photo{width:min(300px,70vw)}
+}
+@media(max-width:560px){
+  .focus{grid-template-columns:1fr}
+  .projects{grid-template-columns:1fr}
+  .top .label:last-child{font-size:9px}
+  .hero{min-height:880px}.circle{top:170px;bottom:auto;width:300px}.bio{top:auto;bottom:auto;position:relative;margin-top:380px;max-width:none;padding-bottom:20px}
+  .photo{bottom:auto;top:150px}
+  .stamp{top:380px;right:0}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="frame">
+  <span class="side l">Learning Web Development &nbsp;&nbsp;/&nbsp;&nbsp; Building with Intention</span>
+  <span class="side r">Arabic-First Design &nbsp;&nbsp;/&nbsp;&nbsp; Seeking Beneficial Knowledge</span>
+
+  <header class="top">
+    <span class="label"><span class="star">✱</span>Junior Web Developer</span>
+    <a href="#contact" class="label link">Available for freelance <span class="arrow">⟶</span></a>
+  </header>
+
+  <main>
+  <section class="hero" style="border-top:0">
+    <div class="big" aria-hidden="true">Portfolio</div>
+    <div class="circle"></div>
+    <div class="photo">
+      <!-- placeholder figure: replace with a transparent PNG cutout -->
+      <svg viewBox="0 0 400 520" role="img" aria-label="Portrait placeholder">
+        <path d="M30 520c0-120 60-170 170-170s170 50 170 170z" fill="#151515"/>
+        <path d="M165 340h70v50c0 14-70 14-70 0z" fill="#E6B393"/>
+        <ellipse cx="200" cy="230" rx="82" ry="104" fill="#EFC3A5"/>
+        <path d="M118 215c-6-90 40-130 86-130s84 40 78 130c-14-40-40-62-82-62s-68 22-82 62z" fill="#151515"/>
+        <rect x="132" y="212" width="62" height="38" rx="12" fill="#151515"/>
+        <rect x="206" y="212" width="62" height="38" rx="12" fill="#151515"/>
+        <rect x="190" y="222" width="20" height="6" fill="#151515"/>
+        <path d="M148 222l20-4" stroke="#fff" stroke-opacity=".35" stroke-width="3"/>
+        <path d="M176 296q24 16 48 0" stroke="#A8643F" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M170 350l30 50 30-50" fill="#F6F3EE"/>
+      </svg>
+    </div>
+    <div class="stamp" aria-hidden="true">
+      <svg viewBox="0 0 120 120">
+        <defs><path id="c" d="M60 60m-42 0a42 42 0 1 1 84 0a42 42 0 1 1-84 0"/></defs>
+        <text font-size="8.4" font-weight="600" textLength="262" lengthAdjust="spacing" fill="#151515" font-family="Space Grotesk,sans-serif">
+          <textPath href="#c">• STILL LEARNING • BISMILLAH • TRYING MY BEST •</textPath></text>
+      </svg><b>✱</b>
+    </div>
+    <div class="bio">
+      <div class="label">Hello, I'm</div>
+      <h1>Amala Alfafan Karomi</h1>
+      <div class="label role">Junior Web Developer &amp; Eternal Learner</div>
+      <p>I'm a junior web developer, still learning and trying to build clean, useful web apps. Every project is a lesson, and I'm grateful for the chance to grow.</p>
+      <div class="sign">Alfafan</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="sec-head" style="grid-template-columns:1fr"><h2 class="sec-title">About Me</h2></div>
+    <div class="about">
+      <div>
+        <p>I'm a student from Indonesia with a background in Arabic language and Islamic jurisprudence. Today I'm learning full stack web development through a bootcamp and independent study.</p>
+        <p>I enjoy building tools around reading, learning, and knowledge, and I try to bring care for language and detail into every interface I make.</p>
+      </div>
+      <ul class="facts">
+        <li><span>Based in</span><b>Indonesia</b></li>
+        <li><span>Focus</span><b>Full Stack Web Development</b></li>
+        <li><span>Learning at</span><b>Harisenin.com</b></li>
+        <li><span>Background</span><b>Arabic &amp; Fiqh</b></li>
+        <li><span>Open to</span><b>Remote Worldwide</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head">
+      <h2 class="sec-title">Selected Projects</h2>
+      <p>Projects I've built while learning, imperfect but sincere attempts to make something useful.</p>
+      <a href="#" class="label link">View all projects <span class="arrow">⟶</span></a>
+    </div>
+    <div class="projects">
+      <article class="card"><div class="thumb"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#2a2724"/><rect y="220" width="400" height="80" fill="#1b1917"/><path d="M150 220V120h100v100M150 150h100" stroke="#2F5D50" stroke-width="8" fill="none"/><circle cx="320" cy="80" r="30" fill="#3a3531"/></svg></div>
+        <footer><span class="n">01</span><div><h3>Qayd</h3><small>Arabic PDF Reader &amp; Notes</small></div></footer></article>
+      <article class="card"><div class="thumb"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#D9CDB9"/><path d="M130 300c0-110 30-190 70-190s70 80 70 190z" fill="#B9A688"/><circle cx="200" cy="85" r="24" fill="#F0E6D4"/><rect x="40" y="40" width="60" height="90" fill="#EADFCB"/></svg></div>
+        <footer><span class="n">02</span><div><h3>Qiraah</h3><small>Reading Progress Tracker App</small></div></footer></article>
+      <article class="card"><div class="thumb"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#E9E3D8"/><rect x="50" y="40" width="140" height="200" fill="#fff"/><rect x="210" y="40" width="140" height="200" fill="#fff"/><rect x="66" y="58" width="108" height="70" fill="#2F5D50"/><path d="M66 150h108M66 166h90M226 62h108M226 78h108M226 94h70M226 130h108M226 146h90" stroke="#151515" stroke-width="5"/></svg></div>
+        <footer><span class="n">03</span><div><h3>TPQ Management System</h3><small>Islamic School Admin</small></div></footer></article>
+      <article class="card"><div class="thumb"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#151515"/><rect x="150" y="60" width="100" height="190" rx="14" fill="#2b2b2b"/><rect x="150" y="60" width="100" height="40" rx="14" fill="#2F5D50"/><rect x="165" y="130" width="70" height="50" fill="#444"/><path d="M0 250h400" stroke="#333"/></svg></div>
+        <footer><span class="n">04</span><div><h3>Videobelajar</h3><small>Video Learning Platform</small></div></footer></article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head" style="grid-template-columns:1fr"><h2 class="sec-title">Skills &amp; Learning Progress</h2><p style="color:var(--muted);margin-top:2px">My honest self-assessment. Still improving, in sha Allah.</p></div>
+    <div class="skills" style="border-top:0">
+      <div id="bars">
+        <div class="bar" data-v="85"><div class="label"><span>HTML &amp; CSS</span><span>85%</span></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar" data-v="70"><div class="label"><span>JavaScript</span><span>70%</span></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar" data-v="80"><div class="label"><span>Responsive Design</span><span>80%</span></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar" data-v="60"><div class="label"><span>React / Frontend Frameworks</span><span>60%</span></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar" data-v="50"><div class="label"><span>Backend &amp; Database (Basic)</span><span>50%</span></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar" data-v="90"><div class="label"><span>Arabic Language</span><span>90%</span></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar" data-v="65"><div class="label"><span>UI & UX</span><span>65%</span></div><div class="track"><div class="fill"></div></div></div>
+      </div>
+      <div class="quote"><div class="mark">“</div><p>I'm still learning, but I try to build digital tools that make knowledge easier to reach, with sincerity, care, and humility.</p></div>
+      <div>
+        <div class="feat"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg></span><div><div class="label">Seeking Benefit</div><p>I try to build things that are useful for others, not just impressive to look at</p></div></div>
+        <div class="feat"><span class="ico"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span><div><div class="label">Learning Every Day</div><p>I'm still growing, and I welcome correction and advice</p></div></div>
+        <div class="feat"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="10" rx="1"/><rect x="14" y="10" width="7" height="11" rx="1"/></svg></span><div><div class="label">Honest, Clean Code</div><p>I strive to write code that is readable and made with care</p></div></div>
+        <div class="feat"><span class="ico"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><div><div class="label">Arabic-First Thinking</div><p>I'm learning to handle right-to-left layouts and Arabic typography properly</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="sec-head" style="grid-template-columns:1fr"><h2 class="sec-title">Tech Stack</h2><p style="color:var(--muted);margin-top:6px">Solid chips are what I use now. Dashed chips are what I'm learning.</p></div>
+    <div class="chips">
+      <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">Git &amp; GitHub</span><span class="chip">Responsive Design</span><span class="chip">RTL / Arabic Typography</span>
+      <span class="chip soon">React</span><span class="chip soon">Node.js</span><span class="chip soon">Databases</span>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="sec-head">
+      <h2 class="sec-title">My Learning Journey</h2>
+      <p>The path so far, and the people and lessons that shaped it.</p>
+      <span></span>
+    </div>
+    <div class="reviews">
+      <article class="rev"><div class="label" style="color:var(--accent)">Bootcamp</div><h3 style="font-family:var(--serif);font-size:1.3rem;line-height:1.2">Full Stack Development Bootcamp</h3><p style="color:var(--muted)">Learning modern web development at Harisenin.com, step by step.</p></article>
+      <article class="rev"><div class="label" style="color:var(--accent)">Independent</div><h3 style="font-family:var(--serif);font-size:1.3rem;line-height:1.2">Self-Study</h3><p style="color:var(--muted)">Building real projects to practice what I learn.</p></article>
+      <article class="rev"><div class="label" style="color:var(--accent)">Background</div><h3 style="font-family:var(--serif);font-size:1.3rem;line-height:1.2">Arabic &amp; Islamic Studies</h3><p style="color:var(--muted)">My background in Arabic and fiqh, which I hope to bring into my work.</p></article>
+    </div>
+  </section>
+  <section id="focus">
+    <div class="sec-head" style="grid-template-columns:1fr"><h2 class="sec-title">Currently Focusing On</h2></div>
+    <div class="focus">
+      <div><b>01</b><h3>Full Stack Fundamentals</h3><p>Following the Harisenin.com bootcamp curriculum.</p></div>
+      <div><b>02</b><h3>JavaScript in Depth</h3><p>Practicing DOM, logic, and building features step by step.</p></div>
+      <div><b>03</b><h3>Backend &amp; Databases</h3><p>Learning how data is stored, served, and secured.</p></div>
+      <div><b>04</b><h3>Real Projects</h3><p>Turning lessons into apps people can actually use.</p></div>
+    </div>
+    <p class="note">“And say: My Lord, increase me in knowledge.” — Qur'an 20:114</p>
+  </section>
+  </main>
+
+  <footer id="contact"><section>
+    <div class="cta">
+      <div><h2>Let's create <em>something great</em></h2><p>Have a project or an idea? I'd be glad to learn and build it together with you.</p></div>
+      <div class="qr">
+        <svg viewBox="0 0 21 21" shape-rendering="crispEdges" role="img" aria-label="QR code placeholder"><path fill="#151515" d="M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0zM1 1v5h5V1zM15 1v5h5V1zM1 15v5h5v-5zM2 2h3v3H2zM16 2h3v3h-3zM2 16h3v3H2zM9 0h2v2H9zM8 3h2v2H8zM11 4h2v3h-2zM9 8h3v2H9zM13 9h2v2h-2zM16 9h4v2h-4zM8 12h2v3H8zM11 13h3v2h-3zM15 14h2v3h-2zM18 13h3v2h-3zM9 17h3v2H9zM13 18h3v3h-3zM18 18h3v3h-3z"/></svg>
+        <span class="label">Scan to visit my website ↗</span>
+      </div>
+      <ul class="contact">
+        <li><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>alfafankaromi@gmail.com</li>
+        <li><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span>www.github.com/alfafankaromi</li>
+        <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span>Indonesia · Open to Remote Worldwide</li>
+      </ul>
+    </div>
+  </section></footer>
+</div>
+<script>
+(function(){
+  var bars=document.querySelectorAll('.bar');
+  function fill(){bars.forEach(function(b,i){setTimeout(function(){b.querySelector('.fill').style.width=b.dataset.v+'%'},i*90)})}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){fill();io.disconnect()}},{threshold:.3});
+    io.observe(document.getElementById('bars'));
+  }else fill();
+})();
+</script>
+</body>
+</html>
